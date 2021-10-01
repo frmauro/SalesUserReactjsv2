@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Create(){
 
@@ -21,8 +21,17 @@ export default function Create(){
 
     }
 
+    useEffect(() => {
+        // code to run on component mount
+        const M = window.M;
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+          });
+
+      }, [])
+
     return(
-        <div>
             <div className="row">
                 <form className="col s12" onSubmit={submitForm}>
                 <h1>Create User</h1>
@@ -46,14 +55,13 @@ export default function Create(){
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <select value={status} onChange={handleStatus}>
-                            {
-                                itemsStatus.map(function (item) {
-                                    return <option value={item}>{item}</option>;
-                                })
-                            }
-                        </select>
-                        <label>Status</label>
+                    <label>Status</label>
+                    <select className="browser-default">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
                     </div>
                 </div>    
                 <div className="row">
@@ -62,7 +70,6 @@ export default function Create(){
                     </div>    
                 </div>
              </form>
-        </div>
         </div>
     );
 }
