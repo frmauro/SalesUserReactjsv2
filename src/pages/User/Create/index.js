@@ -7,11 +7,18 @@ export default function Create(){
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
+    let itemsStatus = ["Active", "Inactive"];
+
     function submitForm(){
         let vName = name;
         let vPassword = password;
         let vEmail = email;
             alert('submit form!!!   -  ' + vName + ' - ' + vPassword + ' - ' + vEmail);
+    }
+
+    function handleStatus(e){
+        alert(e.target.value);
+
     }
 
     return(
@@ -39,10 +46,12 @@ export default function Create(){
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <select defaultValue={status}>
-                            <option value="" >Choose your option</option>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                        <select value={status} onChange={handleStatus}>
+                            {
+                                itemsStatus.map(function (item) {
+                                    return <option value={item}>{item}</option>;
+                                })
+                            }
                         </select>
                         <label>Status</label>
                     </div>
