@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Create(){
 
-    const [status, setStatus] = useState('Active'); 
+    const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -13,12 +13,13 @@ export default function Create(){
         let vName = name;
         let vPassword = password;
         let vEmail = email;
-            alert('submit form!!!   -  ' + vName + ' - ' + vPassword + ' - ' + vEmail);
+        let vStatus = status;
+            alert('submit form!!!   -  ' + vName + ' - ' + vPassword + ' - ' + vEmail + ' - ' + vStatus);
     }
 
     function handleStatus(e){
-        alert(e.target.value);
-
+        setStatus(e.target.value);
+        //alert(e.target.value);
     }
 
     useEffect(() => {
@@ -56,11 +57,11 @@ export default function Create(){
                 <div className="row">
                     <div className="input-field col s12">
                     <label>Status</label>
-                    <select className="browser-default">
+                    <select className="browser-default" onChange={handleStatus}>
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        {
+                            itemsStatus.map((item, index) => <option key={index} value={item}>{item}</option>)
+                        }
                     </select>
                     </div>
                 </div>    
