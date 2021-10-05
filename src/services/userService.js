@@ -39,6 +39,14 @@ class UserService {
         return response.data;
     }
 
+    async getUserById(id){
+        let users = [];
+        users = await this.getUsers();
+        const user = users.find(item => item._id === id);
+        return user;
+
+    }
+
     insertUser(vm){
 
         const requestOptions = {

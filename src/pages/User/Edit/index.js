@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import UserService from '../../../services/userService';
+
 export default function Edit(){
 
     const { id } = useParams();
@@ -11,7 +13,6 @@ export default function Edit(){
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-
 
     let itemsStatus = ["Active", "Inactive"];
 
@@ -29,33 +30,50 @@ export default function Edit(){
     }
 
 
+    useEffect(() => {
+
+            async function getUserById(id){
+                    await UserService.getUserServiceInstance()
+                    .getUserById(id)
+                    .then(item => {
+                                setName(item.name);
+                                setPassword(item.password);
+                                setEmail(item.email);
+                                setStatus(item.status);
+                            });
+            }
+
+            getUserById(id);
+
+    }, []);
+
+
         return(
             <div className="row">
                 <form className="col s12" onSubmit={submitForm}>
-                <h1>Edit User - {id}</h1>
+                <h3>Edit User - (id):  {id}</h3>
                 <div className="row">
                     <div className="input-field col s6">
-                    <input placeholder="Name" id="name" type="text" className="validate" onChange={e => setName(e.target.value)} />
+                    <input placeholder="Name" id="name" type="text" className="validate" onChange={e => setName(e.target.value)} value={name}  />
                     <label>Name</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                    <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} />
+                    <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} value={password} />
                     <label>Password</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                    <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} />
+                    <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} value={email} />
                     <label>Email</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                     <label>Status</label>
-                    <select className="browser-default" onChange={handleStatus}>
-                        <option value="" disabled selected>Choose your option</option>
+                    <select className="browser-default" onChange={handleStatus} value={status} >
                         {
                             itemsStatus.map((item, index) => <option key={index} value={item}>{item}</option>)
                         }
