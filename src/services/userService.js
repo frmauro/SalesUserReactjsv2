@@ -1,9 +1,15 @@
+import axios from 'axios';
+
 //const urlApi = "http://localhost:8088";
 
 //pod(service) kubernates(minikube)
 const urlApiPut = "http://localhost/user";
 const urlApiCreate = "http://localhost/create";
 const urlApi = "http://localhost/users";
+
+const api = axios.create({
+    baseURL: 'http://localhost'
+})
 
 class UserService {
 
@@ -16,18 +22,22 @@ class UserService {
     }
 
 
-    getUsers(){
-        let arrUsers = [];
+    // getUsers(){
+    //     let arrUsers = [];
+        
+    //     return fetch(urlApi)
+    //     .then(response =>  response.json())
+    //     .then(items =>  {
+    //          arrUsers = items;
+    //          return arrUsers; 
+    //         })
+    //     .catch(err => console.log(err))
+    // }
 
-        return fetch(urlApi)
-        .then(response =>  response.json())
-        .then(items =>  {
-             arrUsers = items;
-             return arrUsers; 
-            })
-        .catch(err => console.log(err))
+    async getUsers(){
+        const response = await api.get('users');
+        return response.data;
     }
-
 
     insertUser(vm){
 

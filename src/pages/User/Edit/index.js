@@ -32,7 +32,7 @@ export default function Edit(){
         return(
             <div className="row">
                 <form className="col s12" onSubmit={submitForm}>
-                <h1>Edit User</h1>
+                <h1>Edit User - {id}</h1>
                 <div className="row">
                     <div className="input-field col s6">
                     <input placeholder="Name" id="name" type="text" className="validate" onChange={e => setName(e.target.value)} />

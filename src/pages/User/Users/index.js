@@ -7,22 +7,25 @@ export default function Users(){
     const [items, setItems] = useState([]);
 
 
-    function getItems(){
-        UserService.getUserServiceInstance()
-        .getUsers()
-        .then(items =>  { 
-            setItems(items)
-         });
-     }
 
      useEffect(() => {
-         getItems();
+
+        async function getItems(){
+            await UserService.getUserServiceInstance()
+            .getUsers()
+            .then(items =>  { 
+                setItems(items)
+             });
+         }
+
+        getItems();
+
      }, []);
 
     return(
         <div class="collection">
             {
-                items.map((item, index) =>  <a key={index} href="/User/Edit/{item._id}" class="collection-item">{item.name}</a>)
+                items.map((item, index) =>  <a key={index} href={`/User/Edit/${item._id}`} class="collection-item">{item.name}</a>)
             }
         </div>
     );
