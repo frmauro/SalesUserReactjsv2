@@ -5,6 +5,7 @@ import UserService from '../../../services/userService';
 export default function Users(){
 
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
 
@@ -14,7 +15,8 @@ export default function Users(){
             await UserService.getUserServiceInstance()
             .getUsers()
             .then(items =>  { 
-                setItems(items)
+                setItems(items);
+                setLoading(false);
              });
          }
 
@@ -22,8 +24,16 @@ export default function Users(){
 
      }, []);
 
+     if (loading){
+         return(
+            <div>
+                <h3>Carregando usuários...</h3>
+            </div>
+         );
+     }
+
     return(
-        <div class="collection">
+        <div className="collection">
             {
                 items.map((item, index) =>  <a key={index} href={`/User/Edit/${item._id}`} class="collection-item">{item.name}</a>)
             }

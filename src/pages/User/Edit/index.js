@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import UserService from '../../../services/userService';
 
@@ -7,6 +7,7 @@ export default function Edit(){
 
     const { id } = useParams();
     //console.log(id);
+    const history = useHistory();
 
 
     const [status, setStatus] = useState(''); 
@@ -36,16 +37,22 @@ export default function Edit(){
                     await UserService.getUserServiceInstance()
                     .getUserById(id)
                     .then(item => {
-                                setName(item.name);
-                                setPassword(item.password);
-                                setEmail(item.email);
-                                setStatus(item.status);
+                                if (item !== undefined){
+                                    // trying navigate with id not exists
+                                    setName(item.name);
+                                    setPassword(item.password);
+                                    setEmail(item.email);
+                                    setStatus(item.status);
+                                }else{
+                                    history.replace('/');
+                                    return;
+                                }
                             });
             }
 
             getUserById(id);
 
-    }, [id]);
+    }, [history, id]);
 
 
         return(
