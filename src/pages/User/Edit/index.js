@@ -45,7 +45,7 @@ export default function Edit(){
 
             getUserById(id);
 
-    }, []);
+    }, [id]);
 
 
         return(
