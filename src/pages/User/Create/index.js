@@ -27,7 +27,7 @@ export default function Create(){
          .insertUser(user)
          .then(item =>  { 
                   alert(item.data);
-              });;
+              });
         
     }
 

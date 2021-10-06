@@ -9,7 +9,6 @@ export default function Edit(){
     //console.log(id);
     const history = useHistory();
 
-
     const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -20,12 +19,22 @@ export default function Edit(){
     let itemsType = ["administrator", "client"];
 
     function submitForm(){
-        let vName = name;
-        let vPassword = password;
-        let vEmail = email;
-        let vStatus = status;
-            alert('submit form!!!   -  ' + vName + ' - ' + vPassword + ' - ' + vEmail + ' - ' + vStatus);
-    }
+        const user = JSON.stringify({
+            id: id,
+            name: name,
+            password: password,
+            email: email,
+            status: status,
+            userType: type
+          });
+
+          UserService.getUserServiceInstance()
+          .updateUser(user)
+          .then(item =>  { 
+                   alert(item.data);
+               });
+ 
+      }
 
     function handleStatus(e){
         setStatus(e.target.value);
