@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## command minikube 
+kubectl delete deploy salesapiuser  -n salesorder
+kubectl delete svc apiusergrpc  -n salesorder
+kubectl delete svc apiuserhttp  -n salesorder
+
+kubectl apply -f deployments/salesapiusernode.yaml -n salesorder
+kubectl apply -f services/apiusergrpc.yaml -n salesorder
+kubectl apply -f services/salesapiusernode.yaml -n salesorder
+
+sudo systemctl status nginx
+
+
+
+
