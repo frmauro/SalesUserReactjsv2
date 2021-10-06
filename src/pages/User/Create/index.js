@@ -1,24 +1,42 @@
 import React, { useState, useEffect } from "react";
 
+import UserService from '../../../services/userService';
+
 export default function Create(){
 
     const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [type, setType] = useState(''); 
 
     let itemsStatus = ["Active", "Inactive"];
+    let itemsType = ["administrator", "client"];
 
     function submitForm(){
-        let vName = name;
-        let vPassword = password;
-        let vEmail = email;
-        let vStatus = status;
-            alert('submit form!!!   -  ' + vName + ' - ' + vPassword + ' - ' + vEmail + ' - ' + vStatus);
+        
+            const user = JSON.stringify({
+                name: name,
+                password: password,
+                email: email,
+                status: status,
+                userType: type
+              });
+
+         UserService.getUserServiceInstance()
+         .insertUser(user)
+         .then(item =>  { 
+                  alert(item.data);
+              });;
+        
     }
 
     function handleStatus(e){
         setStatus(e.target.value);
+        //alert(e.target.value);
+    }
+    function handleType(e){
+        setType(e.target.value);
         //alert(e.target.value);
     }
 
@@ -61,6 +79,17 @@ export default function Create(){
                         <option value="" disabled selected>Choose your option</option>
                         {
                             itemsStatus.map((item, index) => <option key={index} value={item}>{item}</option>)
+                        }
+                    </select>
+                    </div>
+                </div>    
+                <div className="row">
+                    <div className="input-field col s12">
+                    <label>Type</label>
+                    <select className="browser-default" onChange={handleType}>
+                        <option value="" disabled selected>Choose your option</option>
+                        {
+                            itemsType.map((item, index) => <option key={index} value={item}>{item}</option>)
                         }
                     </select>
                     </div>

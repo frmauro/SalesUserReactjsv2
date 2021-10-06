@@ -47,18 +47,35 @@ class UserService {
 
     }
 
+    // insertUser(vm){
+
+    //     const requestOptions = {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: vm
+    //     };
+
+    //     return fetch(urlApiCreate, requestOptions)
+    //     .then(response => response.json())
+    //     .then(item => { return item })
+    //     .catch(err => console.log(err))
+    // }
+
+
     insertUser(vm){
 
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: vm
-        };
+        const options = {
+            headers: {'Content-Type': 'application/json'}
+          };
 
-        return fetch(urlApiCreate, requestOptions)
-        .then(response => response.json())
-        .then(item => { return item })
-        .catch(err => console.log(err))
+        return api.post(`create`, vm, options)
+         .then((response) => {
+            let res = response;
+            return res.data;
+          })
+          .catch((err) => {
+            console.error("ops! ocorreu um erro" + err);
+          });
     }
 
     updateUser(vm){
