@@ -14,8 +14,10 @@ export default function Edit(){
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [type, setType] = useState(''); 
 
     let itemsStatus = ["Active", "Inactive"];
+    let itemsType = ["administrator", "client"];
 
     function submitForm(){
         let vName = name;
@@ -30,6 +32,12 @@ export default function Edit(){
         //alert(e.target.value);
     }
 
+    function handleType(e){
+        setType(e.target.value);
+        //alert(e.target.value);
+    }
+
+
 
     useEffect(() => {
 
@@ -43,6 +51,7 @@ export default function Edit(){
                                     setPassword(item.password);
                                     setEmail(item.email);
                                     setStatus(item.status);
+                                    setType(item.userType);
                                 }else{
                                     history.replace('/');
                                     return;
@@ -83,6 +92,17 @@ export default function Edit(){
                     <select className="browser-default" onChange={handleStatus} value={status} >
                         {
                             itemsStatus.map((item, index) => <option key={index} value={item}>{item}</option>)
+                        }
+                    </select>
+                    </div>
+                </div>    
+                <div className="row">
+                    <div className="input-field col s12">
+                    <label>Type</label>
+                    <select className="browser-default" onChange={handleType} value={type}>
+                        <option value="" disabled selected>Choose your option</option>
+                        {
+                            itemsType.map((item, index) => <option key={index} value={item}>{item}</option>)
                         }
                     </select>
                     </div>
