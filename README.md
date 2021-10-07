@@ -82,8 +82,11 @@ kubectl delete svc apiuserhttp  -n salesorder
 
 
 kubectl apply -f deployments/salesapiusernode.yaml -n salesorder
+
 kubectl apply -f services/apiusergrpc.yaml -n salesorder
+
 kubectl apply -f services/salesapiusernode.yaml -n salesorder
+
 
 ## commands nginx 
 sudo systemctl status nginx
