@@ -95,6 +95,9 @@ sudo systemctl stop nginx
 
 sudo systemctl start nginx
 
+## directory of nginx etc/nginx/sites-available
+sudo nano reverse-proxy.conf
+
 
 
 
