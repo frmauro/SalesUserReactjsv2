@@ -70,7 +70,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-## command minikube 
+## commands minikube 
+
+kubectl get all -n salesorder
+
 kubectl delete deploy salesapiuser  -n salesorder
 kubectl delete svc apiusergrpc  -n salesorder
 kubectl delete svc apiuserhttp  -n salesorder
@@ -79,6 +82,7 @@ kubectl apply -f deployments/salesapiusernode.yaml -n salesorder
 kubectl apply -f services/apiusergrpc.yaml -n salesorder
 kubectl apply -f services/salesapiusernode.yaml -n salesorder
 
+## commands nginx 
 sudo systemctl status nginx
 
 

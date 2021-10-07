@@ -20,7 +20,7 @@ export default function Edit(){
 
     function submitForm(){
         const user = JSON.stringify({
-            id: id,
+            _id: id,
             name: name,
             password: password,
             email: email,
@@ -85,19 +85,19 @@ export default function Edit(){
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                    <input id="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} value={password} />
+                    <input id="password" placeholder="password" type="password" className="validate" onChange={e => setPassword(e.target.value)} value={password} />
                     <label>Password</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                    <input id="email" type="email" className="validate" onChange={e => setEmail(e.target.value)} value={email} />
+                    <input id="email" placeholder="Email" type="email" className="validate" onChange={e => setEmail(e.target.value)} value={email} />
                     <label>Email</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                    <label>Status</label>
+                    <label>Status</label><br />
                     <select className="browser-default" onChange={handleStatus} value={status} >
                         {
                             itemsStatus.map((item, index) => <option key={index} value={item}>{item}</option>)
@@ -107,7 +107,7 @@ export default function Edit(){
                 </div>    
                 <div className="row">
                     <div className="input-field col s12">
-                    <label>Type</label>
+                    <label>Type</label><br />
                     <select className="browser-default" onChange={handleType} value={type}>
                         <option value="" disabled selected>Choose your option</option>
                         {
