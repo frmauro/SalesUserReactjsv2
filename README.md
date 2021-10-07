@@ -91,6 +91,11 @@ kubectl apply -f services/salesapiusernode.yaml -n salesorder
 ## commands nginx 
 sudo systemctl status nginx
 
+sudo systemctl stop nginx
+
+sudo systemctl start nginx
+
+
 
 
 
