@@ -33,8 +33,8 @@ class Footer extends Component{
                     </div>
                     <div className="footer-copyright">
                         <div className="container">
+                        User Frontend V2 ( reactjs with materialize css )  ----      
                         © 2021 Copyright {this.state.copyright}
-                        <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
                         </div>
                     </div>
                     </footer>
