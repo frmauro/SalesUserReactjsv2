@@ -99,6 +99,12 @@ sudo systemctl start nginx
 sudo nano reverse-proxy.conf
 
 
+## create image
+docker build --tag salesuserreact .
+
+Docker run command: docker run -it --name salesuserreact -p 3000:3000 --link salesusernode salesuserreact
+
+
 
 
 
