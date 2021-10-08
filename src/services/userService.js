@@ -45,26 +45,29 @@ class UserService {
         return api.post(`create`, vm, options)
          .then((response) => {
             let res = response;
-            return res.data;
+            return res.statusText;
           })
           .catch((err) => {
             console.error("ops! ocorreu um erro" + err);
           });
     }
 
-    updateUser(vm){
+        updateUser(vm){
 
-          const requestOptions = {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: vm
-          };
-  
-         return fetch(urlApiPut, requestOptions)
-            .then(response => response.json())
-            .then(item => { return item; })
-            .catch(err => console.log(err))
-    }
+            const options = {
+                headers: {'Content-Type': 'application/json'}
+              };
+    
+            return api.put(`user`, vm, options)
+             .then((response) => {
+                let res = response;
+                return res.statusText;
+              })
+              .catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+              });
+        }
+
 }
 
 export default UserService;

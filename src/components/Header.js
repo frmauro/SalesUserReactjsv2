@@ -9,8 +9,7 @@ function Header() {
                     <Link to="/">Logo</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Link to="/user/Users">Users</Link></li>
-                        <li><Link to="/user/Create">Create User</Link></li>
-                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/user/Create">Create</Link></li>
                     </ul>
                     </div>
                 </nav>

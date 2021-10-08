@@ -26,8 +26,12 @@ export default function Create(){
          UserService.getUserServiceInstance()
          .insertUser(user)
          .then(item =>  { 
-                  alert(item.data);
-              });
+            if (item === "OK"){
+                alert("Operação realizada com sucesso!!");
+              }else{
+                alert("Operação não realizada!!");
+              }
+          });
         
     }
 
@@ -53,7 +57,7 @@ export default function Create(){
     return(
             <div className="row">
                 <form className="col s12" onSubmit={submitForm}>
-                <h1>Create User</h1>
+                <h1>Create</h1>
                 <div className="row">
                     <div className="input-field col s6">
                     <input placeholder="Name" id="name" type="text" className="validate" onChange={e => setName(e.target.value)} />

@@ -31,7 +31,11 @@ export default function Edit(){
           UserService.getUserServiceInstance()
           .updateUser(user)
           .then(item =>  { 
-                   alert(item.data);
+                  if (item === "OK"){
+                    alert("Operação realizada com sucesso!!");
+                  }else{
+                    alert("Operação não realizada!!");
+                  }
                });
  
       }
@@ -76,7 +80,7 @@ export default function Edit(){
         return(
             <div className="row">
                 <form className="col s12" onSubmit={submitForm}>
-                <h3>Edit User - (id):  {id}</h3>
+                <h3>Edit - (id):  {id}</h3>
                 <div className="row">
                     <div className="input-field col s6">
                     <input placeholder="Name" id="name" type="text" className="validate" onChange={e => setName(e.target.value)} value={name}  />
