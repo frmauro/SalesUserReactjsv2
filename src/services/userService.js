@@ -31,21 +31,22 @@ class UserService {
     }
 
     async getUserById(id){
-        let users = [];
-        users = await this.getUsers();
-        const user = users.find(item => item._id === id);
+        //let users = [];
+        //users = await this.getUsers();
+        const response = await api.get('GetUserById/'+id);       
+        //const user = users.find(item => item._id === id);
+        const user = response.data;
         return user;
-
     }
 
 
-    insertUser(vm){
+    async insertUser(vm){
 
         const options = {
             headers: {'Content-Type': 'application/json'}
           };
 
-        return api.post(`create`, vm, options)
+        return await api.post(`CreateUser`, vm, options)
          .then((response) => {
             let res = response;
             return res.statusText;
@@ -55,13 +56,13 @@ class UserService {
           });
     }
 
-        updateUser(vm){
+       async updateUser(vm){
 
             const options = {
                 headers: {'Content-Type': 'application/json'}
               };
     
-            return api.put(`user`, vm, options)
+            return await api.put(`UpdateUser`, vm, options)
              .then((response) => {
                 let res = response;
                 return res.statusText;

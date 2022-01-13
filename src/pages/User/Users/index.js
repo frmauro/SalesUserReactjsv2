@@ -35,7 +35,7 @@ export default function Users(){
     return(
         <div className="collection">
             {
-                items.map((item, index) =>  <a key={index} href={`/User/Edit/${item._id}`} class="collection-item">{item.name} - <b>{item.email}</b> - <b>{item.userType}</b></a>)
+                items.map((item, index) =>  <a key={index} href={`/User/Edit/${item.id}`} class="collection-item">{item.name} - <b>{item.email}</b> - <b>{item.userType}</b></a>)
             }
         </div>
     );
