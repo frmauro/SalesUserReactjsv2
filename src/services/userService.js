@@ -7,8 +7,11 @@ const urlApiPut = "http://localhost/user";
 const urlApiCreate = "http://localhost/create";
 const urlApi = "http://localhost/users";
 
+const baseURLDev = "http://localhost:5158";
+const baseURL = "http://localhost";
+
 const api = axios.create({
-    baseURL: 'http://localhost'
+    baseURL: baseURLDev
 })
 
 class UserService {
