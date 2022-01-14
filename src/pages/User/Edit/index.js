@@ -35,7 +35,7 @@ export default function Edit(){
           .then(item =>  { 
                   if (item === "OK"){
                     alert("Operação realizada com sucesso!!");
-                    history.push("/user/users");
+                    history.push("/");
                   }else{
                     alert("Operação não realizada!!");
                   }

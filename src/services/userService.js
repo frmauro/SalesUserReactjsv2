@@ -56,13 +56,13 @@ class UserService {
           });
     }
 
-    async updateUser(vm){
+    updateUser(vm){
 
             const options = {
                 headers: {'Content-Type': 'application/json'}
               };
     
-            return await api.put(`UpdateUser`, vm, options)
+            return api.put(`UpdateUser`, vm, options)
              .then((response) => {
                 let res = response;
                 return res.statusText;
