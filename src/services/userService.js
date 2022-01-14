@@ -56,7 +56,7 @@ class UserService {
           });
     }
 
-       async updateUser(vm){
+    async updateUser(vm){
 
             const options = {
                 headers: {'Content-Type': 'application/json'}

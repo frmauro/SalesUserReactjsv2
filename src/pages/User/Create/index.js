@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 import UserService from '../../../services/userService';
 
 export default function Create(){
+
+    const history = useHistory();
+
 
     const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
@@ -28,6 +32,7 @@ export default function Create(){
          .then(item =>  { 
             if (item === "OK"){
                 alert("Operação realizada com sucesso!!");
+                history.push("/user/users");
               }else{
                 alert("Operação não realizada!!");
               }

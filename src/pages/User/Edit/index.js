@@ -12,6 +12,7 @@ export default function Edit(){
     const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [token, setToken] = useState('');
     const [email, setEmail] = useState('');
     const [type, setType] = useState(''); 
 
@@ -20,9 +21,10 @@ export default function Edit(){
 
     function submitForm(){
         const user = JSON.stringify({
-            _id: id,
+            id: id,
             name: name,
             password: password,
+            token: token,
             email: email,
             status: status,
             userType: type
@@ -33,6 +35,7 @@ export default function Edit(){
           .then(item =>  { 
                   if (item === "OK"){
                     alert("Operação realizada com sucesso!!");
+                    history.push("/user/users");
                   }else{
                     alert("Operação não realizada!!");
                   }
@@ -60,8 +63,10 @@ export default function Edit(){
                     .then(item => {
                                 if (item !== undefined){
                                     // trying navigate with id not exists
+                                    
                                     setName(item.name);
                                     setPassword(item.password);
+                                    setToken(item.token);
                                     setEmail(item.email);
                                     setStatus(item.status);
                                     setType(item.userType);
