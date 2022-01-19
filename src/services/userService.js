@@ -40,13 +40,13 @@ class UserService {
     }
 
 
-    async insertUser(vm){
+    insertUser(vm){
 
         const options = {
             headers: {'Content-Type': 'application/json'}
           };
 
-        return await api.post(`CreateUser`, vm, options)
+        return api.post(`CreateUser`, vm, options)
          .then((response) => {
             let res = response;
             return res.statusText;
@@ -71,15 +71,7 @@ class UserService {
                 console.error("ops! ocorreu um erro" + err);
               });
 
-                // var puturl = baseURLDev + '/UpdateUser'; 
-                // const requestOptions = {
-                //     method: 'PUT',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body:   vm  
-                // };
-                // const res = await fetch(puturl, requestOptions);
-                // const data = await res.json();
-              }
+      }
 
 
 }

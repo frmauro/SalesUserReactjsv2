@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import UserService from '../../../services/userService';
 
 export default function Create(){
 
     const history = useHistory();
-
 
     const [status, setStatus] = useState(''); 
     const [name, setName] = useState('');
@@ -17,7 +16,8 @@ export default function Create(){
     let itemsStatus = ["Active", "Inactive"];
     let itemsType = ["administrator", "client"];
 
-    function submitForm(){
+    function submitForm(e){
+        e.preventDefault();
         
             const user = JSON.stringify({
                 name: name,
@@ -32,8 +32,8 @@ export default function Create(){
          .then(item =>  { 
             if (item === "OK"){
                 alert("Operação realizada com sucesso!!");
-                history.push("/user/users");
-              }else{
+                history.replace('/user/users');
+            }else{
                 alert("Operação não realizada!!");
               }
           });
@@ -49,15 +49,7 @@ export default function Create(){
         //alert(e.target.value);
     }
 
-    useEffect(() => {
-        // code to run on component mount
-        const M = window.M;
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, {});
-          });
-
-      }, [])
+    useEffect(() => {}, [])
 
     return(
             <div className="row">
