@@ -19,7 +19,7 @@ export default function Edit(){
     let itemsStatus = ["Active", "Inactive"];
     let itemsType = ["administrator", "client"];
 
-    function submitForm(){
+    const submitForm = () => {
         const user = JSON.stringify({
             id: id,
             name: name,
@@ -30,17 +30,28 @@ export default function Edit(){
             userType: type
           });
 
-          UserService.getUserServiceInstance()
+         UserService.getUserServiceInstance()
           .updateUser(user)
           .then(item =>  { 
                   if (item === "OK"){
                     alert("Operação realizada com sucesso!!");
-                    history.push("/");
+                    //history.push("/users");
+                    history.replace('/user/users');
                   }else{
                     alert("Operação não realizada!!");
                   }
                });
  
+      }
+
+    //   window.addEventListener('click', event => {
+    //     event.preventDefault();
+    //     submitForm();
+    // })
+
+      const handleSubmit = (e) => {
+         e.preventDefault();
+          submitForm();
       }
 
     function handleStatus(e){
@@ -56,35 +67,36 @@ export default function Edit(){
 
 
     useEffect(() => {
+                //function getUserById(id){
+                UserService.getUserServiceInstance()
+                .getUserById(id)
+                .then(item => {
+                            if (item !== undefined){
+                                // trying navigate with id not exists
+                                
+                                setName(item.name);
+                                setPassword(item.password);
+                                setToken(item.token);
+                                setEmail(item.email);
+                                setStatus(item.status);
+                                setType(item.userType);
+                            }else{
+                                history.replace('/');
+                                return;
+                            }
+                        });
+                //};
 
-            async function getUserById(id){
-                    await UserService.getUserServiceInstance()
-                    .getUserById(id)
-                    .then(item => {
-                                if (item !== undefined){
-                                    // trying navigate with id not exists
-                                    
-                                    setName(item.name);
-                                    setPassword(item.password);
-                                    setToken(item.token);
-                                    setEmail(item.email);
-                                    setStatus(item.status);
-                                    setType(item.userType);
-                                }else{
-                                    history.replace('/');
-                                    return;
-                                }
-                            });
-            }
+                //getUserById(id);
+        }, [history, id]);
 
-            getUserById(id);
 
-    }, [history, id]);
+
 
 
         return(
             <div className="row">
-                <form className="col s12" onSubmit={submitForm}>
+                <form className="col s12" onSubmit={handleSubmit} >
                 <h3>Edit - (id):  {id}</h3>
                 <div className="row">
                     <div className="input-field col s6">

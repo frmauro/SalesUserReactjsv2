@@ -70,7 +70,17 @@ class UserService {
               .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
               });
-        }
+
+                // var puturl = baseURLDev + '/UpdateUser'; 
+                // const requestOptions = {
+                //     method: 'PUT',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body:   vm  
+                // };
+                // const res = await fetch(puturl, requestOptions);
+                // const data = await res.json();
+              }
+
 
 }
 
