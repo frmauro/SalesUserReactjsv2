@@ -9,9 +9,10 @@ const urlApi = "http://localhost/users";
 
 const baseURLDev = "http://localhost:5158";
 const baseURL = "http://localhost";
+const baseURLIngressKube = "http://salesorder.com/";
 
 const api = axios.create({
-    baseURL: baseURLDev
+    baseURL: baseURLIngressKube
 })
 
 class UserService {
