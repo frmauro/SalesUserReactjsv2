@@ -33,6 +33,6 @@ docker build -t salesuserreact .
 echo "built docker images and proceeding to delete existing container"
 echo "Deploying the updated container"
 
-docker run --name salesuserreact -d -p 3000:3000 --link salesusernode salesuserreact
+docker run --name salesuserreact -d -p 3000:3000 --link apigetway salesuserreact
 
 echo "Deploying the container"
