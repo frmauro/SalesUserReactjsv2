@@ -106,5 +106,20 @@ Docker run command: docker run -it --name salesuserreact -p 3000:3000 --link sal
 
 
 
+## Urls of many enviroments
+//const urlApi = "http://localhost:8088";
+
+//pod(service) kubernates(minikube)
+const urlApiPut = "http://localhost/user";
+const urlApiCreate = "http://localhost/create";
+const urlApi = "http://localhost/users";
+
+const baseURLDev = "http://localhost:5158";
+const baseURLTEST = "http://localhost:5000"; // apigetway
+const baseURL = "http://localhost";
+const baseURLIngressKube = "http://salesorder.com/";
+
+
+
 
 
